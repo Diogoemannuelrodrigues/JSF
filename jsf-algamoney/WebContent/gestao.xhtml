@@ -26,14 +26,18 @@
 	<h:inputText value="#{gestaoFesta.festa.idade}"/>
 	<br></br><br></br>
 	
-	<h:commandButton value="Incluir" action="#{gestaoFesta.incluir}"/>
+	<h:commandButton value="Incluir" action="#{gestaoFesta.incluir}" actionListener="#{gestaoFesta.verificaInclusao}"/>
 	<br></br>		
 	<br></br>	
 		<h1>Convidados</h1>
 	
 	<ol>
 		<ui:repeat var="item" value="#{gestaoFesta.festas}">
-		<li>#{item.nome} - #{item.email} - #{item.idade}</li>
+		<li>#{item.nome} - #{item.email} - #{item.idade}
+		</li><h:commandButton value="Excluir" action="#{gestaoFesta.excluir}">
+			<f:setPropertyActionListener target="#{gestaoFesta.festaSelecionado}" value="#{item}"/>
+		</h:commandButton>
+		
 		</ui:repeat>
 	</ol>
 
