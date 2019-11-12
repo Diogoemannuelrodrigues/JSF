@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.faces.bean.SessionScoped;
 import javax.faces.event.ActionEvent;
 
 @ManagedBean
@@ -37,7 +37,7 @@ public class GestaoFesta {
 
 	public void verificaInclusao(ActionEvent e) {
 
-		if ((this.festa.getEmail().equals("")) && this.festa.getIdade().equals("") 
+		if ((this.festa.getEmail().equals("")) && this.festa.getIdade().equals("")
 				&& this.festa.getNome().equals("")) {
 			this.festa.setEmail("Sem dado cadastrado");
 			this.festa.setNome("Sem dado cadastrado");
@@ -54,10 +54,9 @@ public class GestaoFesta {
 		}
 
 	}
-	
-	public void excluir(Festa festa) {
-		this.festas.remove(festa);
-		this.getFestas();
+
+	public void excluir() {
+		this.festas.remove(this.festaSelecionado);
 	}
 
 	public void incluir() {

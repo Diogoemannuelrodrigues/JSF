@@ -118,8 +118,42 @@
 
 
 
+<<<<<<< HEAD
 		<p:commandButton value="Ajuda"
 			action="#{gestaoFesta.obtemAjuda}" />
+=======
+	<h1> Lista de convidados: </h1>
+
+	Nome:
+	<h:inputText value="#{gestaoFesta.festa.nome}"/>
+	<br></br><br></br>
+	
+	E-mail:
+	<h:inputText value="#{gestaoFesta.festa.email}"/>
+	<br></br><br></br>
+	
+	Idade:
+	<h:inputText value="#{gestaoFesta.festa.idade}"/>
+	<br></br><br></br>
+	
+	<h:commandButton value="Incluir" action="#{gestaoFesta.incluir}" actionListener="#{gestaoFesta.verificaInclusao}"/>
+	<br></br>		
+	<br></br>	
+		<h1>Convidados</h1>
+	
+	<ol>
+		<ui:repeat var="item" value="#{gestaoFesta.festas}">
+		<li>#{item.nome} - #{item.email} - #{item.idade}
+		</li><h:commandButton value="Excluir" action="#{gestaoFesta.excluir}">
+			<f:setPropertyActionListener target="#{gestaoFesta.festaSelecionado}" value="#{item}"/>
+		</h:commandButton>
+		
+		</ui:repeat>
+	</ol>
+
+
+	<h:commandLink value="Ajuda sobre a lista de convidados" action="#{gestaoFesta.obtemAjuda}" /> 
+>>>>>>> a3d99fb... Adicionando metodo de exclao do objeto da lista
 	</h:form>
 
 </h:body>
