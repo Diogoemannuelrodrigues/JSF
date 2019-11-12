@@ -6,7 +6,6 @@ import javax.faces.bean.ManagedBean;
 public class OlaMundo {
 
 	private String nome;
-
 	private String nomeAlterado;
 
 	public String getNome() {
