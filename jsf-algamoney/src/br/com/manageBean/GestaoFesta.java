@@ -3,11 +3,11 @@ package br.com.manageBean;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 
 @ManagedBean
-@ApplicationScoped
+@SessionScoped
 public class GestaoFesta {
 
 	private Festa festa;
