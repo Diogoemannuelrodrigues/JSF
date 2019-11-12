@@ -30,13 +30,15 @@
 	<br></br>		
 	<br></br>	
 		<h1>Convidados</h1>
+	
 	<ol>
 		<ui:repeat var="item" value="#{gestaoFesta.festas}">
 		<li>#{item.nome} - #{item.email} - #{item.idade}</li>
 		</ui:repeat>
 	</ol>
-	
-	<h:commandLink value="Ajuda sobre a lista de convidados" action="ajuda"/> 
+
+
+	<h:commandLink value="Ajuda sobre a lista de convidados" action="#{gestaoFesta.obtemAjuda}" /> 
 	</h:form>
 
 </h:body>

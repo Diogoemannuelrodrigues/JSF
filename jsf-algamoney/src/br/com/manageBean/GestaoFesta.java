@@ -17,6 +17,13 @@ public class GestaoFesta {
 		this.festas = new ArrayList<Festa>();
 		this.festa = new Festa();
 	}
+	
+	public String obtemAjuda() {
+		if(this.festas.isEmpty())
+			return "ajuda?faces-redirect=true";
+			else
+			return "temAlgo?faces-redirect=true";
+	}
 
 	public void incluir() {
 		this.festas.add(this.festa);
