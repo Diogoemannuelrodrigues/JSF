@@ -12,9 +12,9 @@
 <h:body>
 
 	<style>
-.ui-button {
-	background: red;
-}
+/* .ui-button { */
+/* 	background: blue; */
+/* } */
 
 .tabela {
 	background-color: white;
@@ -26,33 +26,72 @@
    margin-top:50%;
    margin-bottom:50%;
   }
+  
+.white-button.ui-button.ui-state-default {
+    background-color: #ffffff;
+    color: #222222;
+    border-color: #d6d6d6;
+    /* with the exported variables from Nova and Luna Themes*/
+    border-color: var(--input-border-color, #d6d6d6);
+}
+
+.white-button.ui-button.ui-state-default:enabled:hover, 
+.white-button.ui-button.ui-state-default:focus {
+    background-color: #f2f2f2;
+    border-color: #ccc;
+    color: #373a3c;
+    /* with the exported variables from Nova and Luna Themes*/
+    border-color: var(--input-hover-border-color, #ccc);
+}
+
+.green-button.ui-button.ui-state-default {
+    background-color: #5cb85c;
+    border-color: #5cb85c;
+    color: #fff;
+}
+
+.green-button.ui-button.ui-state-default:enabled:hover, 
+.green-button.ui-button.ui-state-default:focus {
+    background-color: #4cae4c;
+    border-color: #5cb85c;
+}
+
+.red-button.ui-button.ui-state-default {
+    background-color: #d9534f;
+    border-color: #d9534f;
+    color: #fff;
+}
+
+.red-button.ui-button.ui-state-default:enabled:hover, 
+.red-button.ui-button.ui-state-default:focus {
+    background-color: #d43f3a;
+    border-color: #d9534f;
+}
 
 </style>
 
+	<center>
+		<h:graphicImage value="images/guests.png" height="250px"
+			align="middle" />
+	</center>
 	<h:form>
 		<center>
 			<h1>Cadastro de convidados</h1>
 
-
-			Nome:
-			<h:inputText value="#{gestaoFesta.festa.nome}"
-				title="Informe seu nome" style="font-size: 19px" />
-			<br></br> <br></br> E-mail:
-			<h:inputText value="#{gestaoFesta.festa.email}"
-				title="Informe seu e-mail" style="font-size: 19px" />
-			<br></br> <br></br> Idade:
-			<h:inputText value="#{gestaoFesta.festa.idade}"
-				title="Informe sua idade" style="font-size: 19px" />
+			<p:inputText value="#{gestaoFesta.festa.nome}"
+				placeholder="Informe seu nome" style="font-size: 19px" />
+			<br></br> <br></br>
+			<p:inputText value="#{gestaoFesta.festa.email}"
+				placeholder="Informe seu e-mail" style="font-size: 19px" />
+			<br></br> <br></br>
+			<p:inputText value="#{gestaoFesta.festa.idade}"
+				placeholder="Informe sua idade" style="font-size: 19px" />
 			<br></br> <br></br>
 
-			<h:commandButton value="Incluir" action="#{gestaoFesta.incluir}"
+			<p:commandButton value="Incluir" action="#{gestaoFesta.incluir}"
 				actionListener="#{gestaoFesta.verificaInclusao}"
-				style="color: black" id="campobotao" />
+				style="color: black" id="campobotao" ajax="false"/>
 			<br></br> <br></br>
-		</center>
-		<center>
-			<h:graphicImage value="images/guests.png" height="250px"
-				align="middle" />
 		</center>
 
 		<p:dataTable var="item" value="#{gestaoFesta.festas}"
@@ -79,7 +118,7 @@
 
 
 
-		<h:commandLink value="Ajuda sobre a lista de convidados"
+		<p:commandButton value="Ajuda"
 			action="#{gestaoFesta.obtemAjuda}" />
 	</h:form>
 
