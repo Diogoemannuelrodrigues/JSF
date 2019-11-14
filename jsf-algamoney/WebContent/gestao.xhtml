@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<title>Gestao</title>
@@ -19,51 +20,64 @@
 	background-color: white;
 	color: red;
 }
+
+#btn
+  {
+   margin-top:50%;
+   margin-bottom:50%;
+  }
+
 </style>
-	
+
 	<h:form>
-<center>
-		<h1>Cadastro de convidados</h1>
-
-
-	Nome:
-	<h:inputText value="#{gestaoFesta.festa.nome}" title="Informe seu nome"
-			style="font-size: 19px" />
-		<br></br>
-		<br></br>
-	
-	E-mail:
-	<h:inputText value="#{gestaoFesta.festa.email}"
-			title="Informe seu e-mail" style="font-size: 19px" />
-		<br></br>
-		<br></br>
-	
-	Idade:
-	<h:inputText value="#{gestaoFesta.festa.idade}"
-			title="Informe sua idade" style="font-size: 19px" />
-		<br></br>
-		<br></br>
-
-		<h:commandButton value="Incluir" action="#{gestaoFesta.incluir}"
-			actionListener="#{gestaoFesta.verificaInclusao}" style="color: black"
-			id="campobotao" />
-		<br></br>
-		<br></br>
-	</center>	
 		<center>
-			<h:graphicImage value="images/guests.png" height="350px"
+			<h1>Cadastro de convidados</h1>
+
+
+			Nome:
+			<h:inputText value="#{gestaoFesta.festa.nome}"
+				title="Informe seu nome" style="font-size: 19px" />
+			<br></br> <br></br> E-mail:
+			<h:inputText value="#{gestaoFesta.festa.email}"
+				title="Informe seu e-mail" style="font-size: 19px" />
+			<br></br> <br></br> Idade:
+			<h:inputText value="#{gestaoFesta.festa.idade}"
+				title="Informe sua idade" style="font-size: 19px" />
+			<br></br> <br></br>
+
+			<h:commandButton value="Incluir" action="#{gestaoFesta.incluir}"
+				actionListener="#{gestaoFesta.verificaInclusao}"
+				style="color: black" id="campobotao" />
+			<br></br> <br></br>
+		</center>
+		<center>
+			<h:graphicImage value="images/guests.png" height="250px"
 				align="middle" />
 		</center>
 
-			<ol>
-				<ui:repeat var="item" value="#{gestaoFesta.festas}">
-					<li>#{item.nome} - #{item.email} - #{item.idade}</li>
-					<h:commandButton value="Excluir" action="#{gestaoFesta.excluir}">
-						<f:setPropertyActionListener
-							target="#{gestaoFesta.festaSelecionado}" value="#{item}" />
-					</h:commandButton>
-				</ui:repeat>
-			</ol>
+		<p:dataTable var="item" value="#{gestaoFesta.festas}"
+			style="width: 1000px; margin:auto;">
+			<p:column headerText="Nome">
+				<h:outputText value="#{item.nome}" />
+			</p:column>
+
+			<p:column headerText="E-mail">
+				<h:outputText value="#{item.email}" />
+			</p:column>
+
+			<p:column headerText="Idade">
+				<h:outputText value="#{item.idade}" />
+			</p:column>
+			
+			<p:column headerText="Excluir" style="width:70px">
+				<p:commandButton icon="ui-icon-trash" title="Delete this actor" style="width:70px"
+					actionListener="#{gestaoFesta.excluir(item)}" ajax="false" />
+			</p:column>
+
+
+		</p:dataTable>
+
+
 
 		<h:commandLink value="Ajuda sobre a lista de convidados"
 			action="#{gestaoFesta.obtemAjuda}" />

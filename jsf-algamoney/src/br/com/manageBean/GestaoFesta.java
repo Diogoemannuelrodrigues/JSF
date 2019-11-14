@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 import javax.faces.event.ActionEvent;
 
 @ManagedBean
-@SessionScoped
+@ViewScoped
 public class GestaoFesta {
 
 	private Festa festa;
@@ -55,8 +55,9 @@ public class GestaoFesta {
 
 	}
 	
-	public void excluir() {
-		this.festas.remove(this.festaSelecionado);
+	public void excluir(Festa festa) {
+		this.festas.remove(festa);
+		this.getFestas();
 	}
 
 	public void incluir() {
