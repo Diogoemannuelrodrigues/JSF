@@ -9,40 +9,64 @@
 	<title>Gestao</title>
 </h:head>
 <h:body>
+
+	<style>
+.ui-button {
+	background: red;
+}
+
+.tabela {
+	background-color: white;
+	color: red;
+}
+</style>
 	
 	<h:form>
+<center>
+		<h1>Cadastro de convidados</h1>
 
-	<h1> Lista de convidados: </h1>
 
 	Nome:
-	<h:inputText value="#{gestaoFesta.festa.nome}"/>
-	<br></br><br></br>
+	<h:inputText value="#{gestaoFesta.festa.nome}" title="Informe seu nome"
+			style="font-size: 19px" />
+		<br></br>
+		<br></br>
 	
 	E-mail:
-	<h:inputText value="#{gestaoFesta.festa.email}"/>
-	<br></br><br></br>
+	<h:inputText value="#{gestaoFesta.festa.email}"
+			title="Informe seu e-mail" style="font-size: 19px" />
+		<br></br>
+		<br></br>
 	
 	Idade:
-	<h:inputText value="#{gestaoFesta.festa.idade}"/>
-	<br></br><br></br>
-	
-	<h:commandButton value="Incluir" action="#{gestaoFesta.incluir}" actionListener="#{gestaoFesta.verificaInclusao}"/>
-	<br></br>		
-	<br></br>	
-		<h1>Convidados</h1>
-	
-	<ol>
-		<ui:repeat var="item" value="#{gestaoFesta.festas}">
-		<li>#{item.nome} - #{item.email} - #{item.idade}
-		</li><h:commandButton value="Excluir" action="#{gestaoFesta.excluir}">
-			<f:setPropertyActionListener target="#{gestaoFesta.festaSelecionado}" value="#{item}"/>
-		</h:commandButton>
-		
-		</ui:repeat>
-	</ol>
+	<h:inputText value="#{gestaoFesta.festa.idade}"
+			title="Informe sua idade" style="font-size: 19px" />
+		<br></br>
+		<br></br>
 
+		<h:commandButton value="Incluir" action="#{gestaoFesta.incluir}"
+			actionListener="#{gestaoFesta.verificaInclusao}" style="color: black"
+			id="campobotao" />
+		<br></br>
+		<br></br>
+	</center>	
+		<center>
+			<h:graphicImage value="images/guests.png" height="350px"
+				align="middle" />
+		</center>
 
-	<h:commandLink value="Ajuda sobre a lista de convidados" action="#{gestaoFesta.obtemAjuda}" /> 
+			<ol>
+				<ui:repeat var="item" value="#{gestaoFesta.festas}">
+					<li>#{item.nome} - #{item.email} - #{item.idade}</li>
+					<h:commandButton value="Excluir" action="#{gestaoFesta.excluir}">
+						<f:setPropertyActionListener
+							target="#{gestaoFesta.festaSelecionado}" value="#{item}" />
+					</h:commandButton>
+				</ui:repeat>
+			</ol>
+
+		<h:commandLink value="Ajuda sobre a lista de convidados"
+			action="#{gestaoFesta.obtemAjuda}" />
 	</h:form>
 
 </h:body>
