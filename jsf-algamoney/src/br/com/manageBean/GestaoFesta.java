@@ -35,6 +35,9 @@ public class GestaoFesta {
 			return "temAlgo?faces-redirect=true";
 	}
 
+
+//Cfriando um comentario para teste.
+
 	public void verificaInclusao(ActionEvent e) {
 
 		if ((this.festa.getEmail().equals("")) && this.festa.getIdade().equals("")
